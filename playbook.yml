@@ -1,0 +1,40 @@
+- name: Install Apache
+  yum:
+    name: httpd
+    state: present
+
+- name: Start Apache
+  service:
+    name: httpd
+    state: started
+    enabled: yes
+
+- name: Create webpage
+  copy:
+    content: |
+      <html>
+      <head>
+          <title>Ansible Project</title>
+      </head>
+
+      <body style="background-color:black; color:white; text-align:center; padding-top:100px; font-family:Arial;">
+
+          <h1>Welcome from Ansible Automation</h1>
+
+          <h2>DevOps Configuration Management Project</h2>
+
+          <p>Apache Web Server installed automatically using Ansible Playbook</p>
+
+          <hr style="width:50%;">
+
+          <h3>Project Features</h3>
+
+          <p>✔ Automated Apache Installation</p>
+          <p>✔ Remote Server Configuration</p>
+          <p>✔ Infrastructure Automation</p>
+          <p>✔ Configuration Management Using Ansible</p>
+
+      </body>
+      </html>
+
+    dest: /var/www/html/index.html
